@@ -9,7 +9,7 @@ $ns namtrace-all $namfile
 proc Finish {} {
     global ns ntrace namfile
 
-    flush trace-all
+    $ns flush-trace
     close $ntrace
     close $namfile
 
@@ -22,17 +22,22 @@ for {set i 0} {$i < 6} {incr i} {
     set n($i) [$ns node]
 }
 
-for (set j 0) {$j < 5} {incr j}{
-    $ns duplex-link $n($j) $n([expr($j+1)]) 0.1 Mb 10ms DropTail
+for (set j 0) {$j < 5} {incr j} {
+    $ns duplex-link $n($j) $n([expr $j+1]) 0.1 Mb 10ms DropTail
 }
+
+$ns color 1 Blue
+$ns color 2 Red
 
 Agent/Ping instproc recv {from rtt} {
     $self instvar node_
-    puts "Node [$node_id] recieved ping packet from node $from with round trip time $rtt ms"
+    puts "Node [$node_ id] recieved ping packet from node $from with round trip time $rtt ms"
 }
 
 set p0 [new Agent/Ping]
+$p0 set class_ 1
 set p1 [new Agent/Ping]
+$p1 set class_ 1
 $p0 attach-agent $n(0)
 $p1 attach-agent $n(5)
 $ns connect $p0 $p1
@@ -48,8 +53,9 @@ $ns duplex-link-op $n(2) $n(2) queuePos 0.5
 
 set cbr0 [new Application/Traffic/CBR]
 $cbr0 attach-agent $tcp0
-$cbr0 set packetSize_ 50
-$cbr0 set rate_ 100
+$cbr0 set class_ 2
+$cbr0 set packetSize_ 500
+$cbr0 set rate_ 1Mb
 
 $ns at 0.0 "$p0 send"
 $ns at 0.2 "$p1 send"
