@@ -53,8 +53,8 @@ set sink1 [new Agent/TCPSink]
 $ns attach-agent $n(5) $tcp1
 $ns attach-agent $n(1) $sink1
 $ns connect $tcp1 $sink1
-$tcp0 set window_ 8000
-$tcp0 set packetSize_ 1500
+$tcp1 set window_ 8000
+$tcp1 set packetSize_ 1500
 
 set ftp0 [new Application/FTP]
 $ftp0 attach-agent $tcp0
