@@ -23,7 +23,7 @@ for {set i 0} {$i < 6} {incr i} {
 }
 
 for (set j 0) {$j < 5} {incr j} {
-    $ns duplex-link $n($j) $n([expr $j+1]) 0.1 Mb 10ms DropTail
+    $ns duplex-link $n($j) $n([expr $j+1]) 0.1Mb 10ms DropTail
 }
 
 $ns color 1 Blue
