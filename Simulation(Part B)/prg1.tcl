@@ -4,7 +4,7 @@ $ns trace-all $ntrace
 set namfile [open prg1.nam w]
 $ns namtrace-all $namfile 
 
-proc Finish{}{
+proc Finish {} {
     global ns ntrace namfile
     $ns flush-trace
     close $ntrace
