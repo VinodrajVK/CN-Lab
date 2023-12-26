@@ -9,7 +9,7 @@ public class BellmanFord {
         for (int i = 1; i < n; i++) {
             for (int u = 0; u < n; u++) {
                 for (int v = 0; v < n; v++) {
-                    if (graph[v][u] != 0 && distance[u] != Integer.MAX_VALUE
+                    if (graph[u][v] != 0 && distance[u] != Integer.MAX_VALUE
                             && graph[u][v] + distance[u] < distance[v]) {
                         distance[v] = graph[u][v] + distance[u];
                     }
