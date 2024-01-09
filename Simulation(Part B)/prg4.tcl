@@ -27,7 +27,7 @@ $ns node-config -adhocRouting DSDV \
                 -ifqLen 20 \
                 -phyType Phy/WirelessPhy \
                 -channelType Channel/WirelessChannel \
-                -propType Propogation/TwoWayGround \
+                -propType Propagation/TwoRayGround \
                 -antennaType Antenna/OmniAntenna \
                 -topoInstance $topo \
                 -agentTrace ON \
@@ -36,33 +36,33 @@ $ns node-config -adhocRouting DSDV \
 create god-6
 
 set n0 [$ns node]
-$n0 set X_ 600
-$n0 set Y_ 400 
+$n0 set X_ 100
+$n0 set Y_ 200 
 $n0 set Z_ 0
 
 set n1 [$ns node]
-$n1 set X_ 900
-$n1 set Y_ 1000 
+$n1 set X_ 200
+$n1 set Y_ 400 
 $n1 set Z_ 0
 
 set n2 [$ns node]
-$n2 set X_ 700
-$n2 set Y_ 200 
+$n2 set X_ 300
+$n2 set Y_ 600 
 $n2 set Z_ 0
 
 set n3 [$ns node]
-$n3 set X_ 200
-$n3 set Y_ 200 
+$n3 set X_ 400
+$n3 set Y_ 600 
 $n3 set Z_ 0
 
 set n4 [$ns node]
-$n4 set X_ 1000
-$n4 set Y_ 100 
+$n4 set X_ 500
+$n4 set Y_ 400 
 $n4 set Z_ 0
 
 set n5 [$ns node]
-$n5 set X_ 1100
-$n5 set Y_ 400 
+$n5 set X_ 600
+$n5 set Y_ 200 
 $n5 set Z_ 0
 
 set udp [new Agent/UDP]
